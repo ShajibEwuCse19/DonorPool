@@ -1,0 +1,93 @@
+{%extends 'app/base.html'%} 
+{% load static %}
+{% block content %}
+<link
+    rel="stylesheet"
+    href="{% static 'css/profile.css' %}"
+/>
+<div class="profile_wrapper">
+    <form method="POST" action="{%url 'profile'%}" autocomplete='off'>
+        {% csrf_token %}
+        <div class="container rounded bg-white">
+            <div class="row">
+                <div class="col-md-3 border-right">
+                    <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+                        <img  title='To set a avatar create an account on libravatar with {{user.email}}'  data-toggle="tooltip" data-placement="top" id='avatar' class="rounded-circle mt-5" width="150px" src="https://seccdn.libravatar.org/avatar/{{user.md5_email}}?s=150&d=https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg">
+                        <span class="font-weight-bold">{{user.get_full_name}}</span>
+                        <span class="text-black-50">{{user.email}}</span>
+                        <button type="button" class="btn btn-danger" id='delete_button'>Delete</button>
+                        <img class='logo mt-4' src="{% static 'images/logo.jpg' %}"  width='150' height='150'/>
+                    </div>
+                    
+                </div>
+                <div class="col-md-5 border-right">
+                    <div class="p-3 py-5">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h4 class="text-right">Profile Settings</h4>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-md-6"><label class="labels">First Name</label>{{ form.first_name }}{%if form.first_name.errors %}{{ form.first_name.errors }} {%endif%}</div>
+                            <div class="col-md-6"><label class="labels">Last Name</label>{{ form.last_name }}{%if form.last_name.errors %}{{ form.last_name.errors }} {%endif%}</div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-md-12"><label class="labels">Password</label>{{ form.password }} {%if form.password.errors %}{{ form.password.errors }} {%endif%}</div>
+                            <div class="col-md-12"><label class="labels">Confirm Password</label>{{ form.confirm_password }} {%if form.confirm_password.errors %}{{ form.confirm_password.errors }} {%endif%}</div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-md-6"><label class="labels">Blood Group</label>{{ form.blood_group }}{%if form.blood_group.errors %}{{ form.blood_group.errors }} {%endif%}</div>
+                            <div class="col-md-12"><label class="labels">Age</label>{{ form.age }} {%if form.age.errors %}{{ form.age.errors }} {%endif%}</div>
+                            <div class="col-md-12"><label class="labels">Mobile Number</label>{{ form.phone_number }} {%if form.phone_number.errors %}{{ form.phone_number.errors }} {%endif%}</div>
+                            <div class="col-md-12"><label class="labels">Email</label>{{ form.email }} {%if form.email.errors %}{{ form.email.errors }} {%endif%}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="p-3">
+                        <div class="col-md-12"><label class="labels">Last Blood Donation date ( yyyy - mm - dd)</label>{{ form.last_blood_donation_date }} {%if form.last_blood_donation_date.errors %}{{ form.last_blood_donation_date.errors }} {%endif%}</div>
+                        <br>
+                        <div class="col-md-12"><label class="labels">Next Blood Donation Date</label><br/>{%if user.get_next_donation_date%}{{user.get_next_donation_date}}{%else%}Please fill out last blood donation date{%endif%}</div>
+                    </div>
+                    <div class="p-3">
+                        <div class="col-md-12"><label class="labels">Gender</label>{{ form.gender }} {%if form.gender.errors %}{{ form.gender.errors }} {%endif%}</div>
+                        <div class="col-md-12"><label class="labels">Occupation</label>{{ form.occupation }} {%if form.occupation.errors %}{{ form.occupation.errors }} {%endif%}</div>
+                    </div>
+                    <div class="p-3">
+                        <div class="col-md-12"><label class="labels">Present Address</label>{{ form.present_address}} {%if form.present_address.errors %}{{ form.present_address.errors }} {%endif%}</div>
+                        <div class="col-md-12"><label class="labels">Permanent Address</label>{{ form.permanent_address}} {%if form.permanent_address.errors %}{{ form.permanent_address.errors }} {%endif%}</div>
+                        <div class="col-md-12"><label class="labels">{%if user.occupation == 'Student'%}Educational Institute{%else%}Workplace{%endif%}</label>{{ form.workplace }} {%if form.workplace.errors %}{{ form.workplace.errors }} {%endif%}</div>
+                    </div>
+                </div>
+                <div class="my-3 text-center"><button class="btn btn-primary profile-button" type="submit">Save Profile</button></div>
+            </div>
+        </div>
+        </div>
+        </div>
+    </form>
+</div>
+
+<script>
+    const avatarElement = document.querySelector('#avatar');
+
+    avatarElement.addEventListener('mouseenter', () => {
+        $('#avatar').tooltip('show');
+    });
+    avatarElement.addEventListener('mouseleave', () => {
+        $('#avatar').tooltip('hide');
+    });
+
+    const deleteButtonElement = document.querySelector('#delete_button');
+    $('#delete_button').on('click', () => {
+        $.ajax({
+            url: "{% url 'delete_profile' user.id %}",
+            type: 'POST',
+            data: {
+                csrfmiddlewaretoken: '{{ csrf_token }}',
+            },
+            success: function (data) {
+                window.location = "{% url 'home' %}";
+            },
+        });
+    });
+</script>
+
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends 'app/base.html' %}
+
+{% block content %}
+
+
+<div class="signup">
+    <form action="" method="POST">
+        {% csrf_token %}
+        <div class="signup1">
+            <h3>Create Account</h3>
+
+            {% for field in form %}
+            <div>
+                <p>{{ field.label }}: <span class="form-field">
+                        {{ field }}
+                    </span></p>
+
+                {% for error in field.errors %}
+                <small style="color: red">{{ error }}</small>
+                {% endfor %}
+            </div>
+            {% endfor %}
+            <br>
+            <button type="submit" class="btn btn-outline-primary">Register</button>
+        </div>
+    </form>
+</div>
+
+{% endblock %}

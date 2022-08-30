@@ -1,0 +1,44 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="row my-5">
+    <div class="col-xl-6 m-auto">
+        {% for object in object_list %}
+            <div class="card mb-3" style="width: full">
+              <div class="card-body">
+                <h5 class="card-title">{{ object.username }}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">{{ object.present_address }}</h6>
+                <div class="row">
+                  <div class="col">
+                    <p> Phone number:{{ object.phone_number }}</p>
+                  </div>
+                  <div class="col">
+                    <p>Parmanent Address: {{ object.permanent_address }}</p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col">
+                    <p> Work Place:{{ object.workplace }}</p>
+                  </div>
+                  <div class="col">
+                    <p>Occupation: {{ object.occupation }}</p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col">
+                    <p> gender:{{ object.gender }}</p>
+                  </div>
+                  <div class="col">
+                    <p>age: {{ object.age }}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+
+{% endblock %}

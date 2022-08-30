@@ -1,0 +1,92 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% load mptt_tags %}
+{% block extracss %}
+    <style>
+        .link-muted { color: #aaa; } .link-muted:hover { color: #1266f1; }
+    </style>
+{% endblock extracss %}
+{% block content %}
+
+<div class="row mb-3">
+    <div class="col-xl-8 m-auto">
+        <div class="card" style="width: full mb-3">
+            <div class="card-body">
+                <h5 class="card-title">{{ object.title }}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">{{ object.user }}</h6>
+                <p class="card-text">
+                    {{ object.body }}
+                </p>
+                <h4>Comments</h4>
+                <form id="myForm" class="mt-3" action="{% url 'comments-add' pk=object.pk %}" method="POST">
+                    {% csrf_token %}
+                    <div class="mb-2">
+                        <textarea class="form-control" name="content" rows="3" placeholder="Comment"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Comment</button>
+                </form>
+                
+                <div class="mt-3">
+                    {% recursetree object.comments.all %}
+                        
+                        <div id="{{ node.id }}" class="d-flex flex-start mb-2">
+                            <div class="card" style="width: 100%;">
+                                <div class="card-body p-4">
+                                <div class="">
+                                    <h5>{{ node.user }}</h5>
+                                    <p class="small">{{ node.created_at }}</p>
+                                    <p>
+                                        {{ node.content}}
+                                    </p>
+                    
+                                    <div class="d-flex justify-content-between align-items-center">
+                                    <div class="d-flex align-items-center">
+                                        <img src="{{ node.user }}" class="rounded-circle" alt="...">
+                                    </div>
+                                    {% if node.level < 10 %}
+                                    <span onclick="myFunction({{ node.id }})" class="link-muted"><i class="fas fa-reply me-1"></i> Reply</span>
+                                    {% endif %}    
+                                </div>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% if not node.is_leaf_node %}
+                        <div class="children ms-4 pl-md-5">
+                            {{ children }}
+                        </div>
+                        {% endif %}
+                        {% endrecursetree %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    function formExit() {
+        document.getElementById("newForm").remove();
+    }
+
+    function myFunction(id) {
+        if (document.contains(document.getElementById("newForm"))) {
+            document.getElementById("newForm").remove();
+        }
+
+        var d1 = document.getElementById(id);
+        d1.insertAdjacentHTML('afterend',
+            '<form id="newForm" action="{% url "comments-add" object.pk %}" class="form-insert py-2" method="post"> \
+                  <select name="parent" class="d-none" id="id_parentt"> \
+                  <option value="' + id + '" selected="' + id + '"></option> \
+                  </select> \
+                  <textarea name="content" cols="40" rows="5" class="form-control" required id="id_content"></textarea> \
+                  {% csrf_token %} \
+                  <div class="d-flex justify-content-wrap"><button type="submit" class="btn mt-2 me-3 btn-primary btn-lg btn-block">comment</button> \
+                    <button type="button" class="btn btn-outline-danger mt-2" onclick="formExit()""><i class="far fa-window-close"></i></button>\
+                </div>\
+                </form>');
+    }
+    $('#myForm').trigger("reset");
+</script>
+
+{% endblock %}

@@ -1,0 +1,62 @@
+Reading package lists...
+Building dependency tree...
+Reading state information...
+make is already the newest version (4.2.1-1.2).
+make set to manually installed.
+build-essential is already the newest version (12.8ubuntu1.1).
+build-essential set to manually installed.
+wget is already the newest version (1.20.3-1ubuntu2).
+wget set to manually installed.
+xz-utils is already the newest version (5.2.4-1ubuntu1.1).
+xz-utils set to manually installed.
+zlib1g-dev is already the newest version (1:1.2.11.dfsg-2ubuntu1.3).
+zlib1g-dev set to manually installed.
+The following package was automatically installed and is no longer required:
+  libfwupdplugin1
+Use 'sudo apt autoremove' to remove it.
+The following additional packages will be installed:
+  binfmt-support libclang-cpp10 libfontconfig1-dev libfreetype-dev
+  libfreetype6-dev libice-dev libllvm10 libncurses-dev libpfm4 libpng-dev
+  libpng-tools libpthread-stubs0-dev libpython2-stdlib libpython2.7-minimal
+  libpython2.7-stdlib libsm-dev libtcl8.6 libtk8.6 libx11-dev libxau-dev
+  libxcb1-dev libxdmcp-dev libxext-dev libxft-dev libxrender-dev libxss-dev
+  libxt-dev libz3-4 libz3-dev llvm-10 llvm-10-dev llvm-10-runtime
+  llvm-10-tools llvm-runtime pkg-config python-cffi-backend
+  python-cryptography python-enum34 python-ipaddress python-six python2
+  python2-minimal python2.7 python2.7-minimal python3-pygments tcl tcl-dev
+  tcl8.6 tcl8.6-dev tk tk8.6 tk8.6-dev uuid-dev x11proto-core-dev x11proto-dev
+  x11proto-scrnsaver-dev x11proto-xext-dev xorg-sgml-doctools xtrans-dev
+Suggested packages:
+  freetype2-doc libice-doc liblzma-doc ncurses-doc readline-doc libsm-doc
+  sqlite3-doc libssl-doc libx11-doc libxcb-doc libxext-doc libxt-doc
+  llvm-10-doc python-cryptography-doc python-cryptography-vectors
+  python-enum34-doc python-openssl-doc python-openssl-dbg python2-doc
+  python-tk python2.7-doc python-pygments-doc ttf-bitstream-vera tcl-doc
+  tcl-tclreadline tcl8.6-doc tk-doc tk8.6-doc
+The following NEW packages will be installed:
+  binfmt-support curl libclang-cpp10 libffi-dev libfontconfig1-dev
+  libfreetype-dev libfreetype6-dev libice-dev libllvm10 liblzma-dev
+  libncurses-dev libncurses5-dev libpfm4 libpng-dev libpng-tools
+  libpthread-stubs0-dev libpython2-stdlib libpython2.7-minimal
+  libpython2.7-stdlib libreadline-dev libsm-dev libsqlite3-dev libssl-dev
+  libtcl8.6 libtk8.6 libx11-dev libxau-dev libxcb1-dev libxdmcp-dev
+  libxext-dev libxft-dev libxrender-dev libxss-dev libxt-dev libz3-4 libz3-dev
+  llvm llvm-10 llvm-10-dev llvm-10-runtime llvm-10-tools llvm-runtime
+  pkg-config python-cffi-backend python-cryptography python-enum34
+  python-ipaddress python-openssl python-six python2 python2-minimal python2.7
+  python2.7-minimal python3-pygments tcl tcl-dev tcl8.6 tcl8.6-dev tk tk-dev
+  tk8.6 tk8.6-dev uuid-dev x11proto-core-dev x11proto-dev
+  x11proto-scrnsaver-dev x11proto-xext-dev xorg-sgml-doctools xtrans-dev
+0 upgraded, 69 newly installed, 0 to remove and 0 not upgraded.
+Need to get 79.0 MB of archives.
+After this operation, 436 MB of additional disk space will be used.
+Get:1 http://bd.archive.ubuntu.com/ubuntu focal-updates/universe amd64 libpython2.7-minimal amd64 2.7.18-1~20.04.3 [336 kB]
+Get:2 http://bd.archive.ubuntu.com/ubuntu focal-updates/universe amd64 python2.7-minimal amd64 2.7.18-1~20.04.3 [1,280 kB]
+Get:3 http://bd.archive.ubuntu.com/ubuntu focal/universe amd64 python2-minimal amd64 2.7.17-2ubuntu4 [27.5 kB]
+Get:4 http://bd.archive.ubuntu.com/ubuntu focal-updates/universe amd64 libpython2.7-stdlib amd64 2.7.18-1~20.04.3 [1,888 kB]
+Get:5 http://bd.archive.ubuntu.com/ubuntu focal-updates/universe amd64 python2.7 amd64 2.7.18-1~20.04.3 [248 kB]
+Get:6 http://bd.archive.ubuntu.com/ubuntu focal/universe amd64 libpython2-stdlib amd64 2.7.17-2ubuntu4 [7,072 B]
+Get:7 http://bd.archive.ubuntu.com/ubuntu focal/universe amd64 python2 amd64 2.7.17-2ubuntu4 [26.5 kB]
+Get:8 http://bd.archive.ubuntu.com/ubuntu focal/universe amd64 binfmt-support amd64 2.2.0-2 [58.2 kB]
+Get:9 http://bd.archive.ubuntu.com/ubuntu focal-updates/main amd64 curl amd64 7.68.0-1ubuntu2.12 [161 kB]
+Get:10 http://bd.archive.ubuntu.com/ubuntu focal/main amd64 libllvm10 amd64 1:10.0.0-4ubuntu1 [15.3 MB]

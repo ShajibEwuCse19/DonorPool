@@ -1,0 +1,30 @@
+{% extends 'app/base.html' %}
+
+{% block content %}
+
+<div class="loginPage1">
+    <form action="" method="POST">
+        <div class="loginPage">
+            {% csrf_token %}
+            <h1 class="login">login</h1>
+            {% for field in form %}
+            <div class="inputbox">
+                <p>{{ field.label }}: <br> {{ field }}</p>
+                {% endfor %}
+            </div>
+        </div>
+        <br>
+        <button type="submit" class="btn btn-outline-primary mt-3">Login</button>
+    </form>
+    <p>Don't have an account? <a href="{% url 'signup' %}">Signup here</a></p><br>
+
+    <div>
+        <a href="">Forgot Password</a>
+    </div>
+
+</div>
+
+
+
+
+{% endblock %}

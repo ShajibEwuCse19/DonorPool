@@ -1,0 +1,25 @@
+._header {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.user_container {
+    margin-top: 6rem;
+    margin: auto;
+    width: 20rem;
+    display: flex;
+}
+
+.div_f {
+    margin-top: 1rem;
+    width: 9rem;
+    margin: auto;
+    text-align: right;
+}
+
+.div_e {
+    margin-top: 1rem;
+    margin: auto;
+    width: 9rem;
+}

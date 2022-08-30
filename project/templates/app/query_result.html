@@ -1,0 +1,20 @@
+{% extends 'app/base.html' %} {% load static %} {% block content %}
+
+<link rel="stylesheet" href="{% static 'css/query.css' %}" />
+
+<div class="_header">
+    <h2>
+        Showing Results of "{{ Q_key }}"
+    </h2>
+</div>
+
+{% for list in lists %}
+<div class="user_container">
+    <div class="div_f">
+        Name: <br> Age: <br> Phone Number: <br> Present Address: <br> Last Donated: <br> Gender: <br>
+    </div>
+    <div class="div_e">
+        <b>{{ list.first_name }}</b> <b>{{ list.last_name}}</b> <br> <b>{{ list.age }}</b> <br> <b>{{ list.phone_number }}</b> <br> <b>{{ list.present_address }}</b> <br> <b>{{ list.last_blood_donation_date }}</b> <br> <b>{{ list.gender }}</b> <br>
+    </div>
+</div>
+<hr> {% endfor %} {% endblock %}

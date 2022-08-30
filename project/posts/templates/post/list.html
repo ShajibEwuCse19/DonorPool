@@ -1,0 +1,44 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="row">
+    <div class="col-xl-6 m-auto">
+        <form action="" method="post">
+            {% csrf_token %}
+            <div class="mb-3">
+              <label class="form-label">Post Title</label>
+                {{ form.title }}
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Post Description</label>
+                {{ form.body }}
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Published</label>
+                {{ form.status }}
+            </div>
+            <button type="submit" class="btn btn-primary mb-3">Post Tweet</button>
+        </form>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xl-6 m-auto">
+        {% for object in posts %}
+            <div class="card mb-3" style="width: full">
+              <div class="card-body">
+                <h5 class="card-title">{{ object.title }}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">{{ object.user }}</h6>
+                <p class="card-text">
+                    {{ object.body }}
+                </p>
+                <a href="{{ object.get_absolute_url }}" class="btn btn-primary">More Info</a>
+              </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+
+{% endblock %}
