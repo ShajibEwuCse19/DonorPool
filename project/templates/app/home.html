@@ -208,6 +208,8 @@
         </div>
     </section>
 
+    <!-- appointment section -->
+
     <section class="section-padding" id="booking">
         <div class="container">
             <div class="row">
@@ -218,6 +220,7 @@
                         <h2 class="text-center mb-lg-3 mb-2">Book an appointment</h2>
 
                         <form role="form" action="#booking" method="post">
+                            {% csrf_token %}
                             <div class="row">
                                 <div class="col-lg-6 col-12">
                                     <input type="text" name="name" id="name" class="form-control"
@@ -245,7 +248,8 @@
                                 </div>
 
                                 <div class="col-lg-3 col-md-4 col-6 mx-auto">
-                                    <button type="submit" class="form-control" id="submit-button">Book Now</button>
+                                     
+                                    <button type="submit" class="form-control" id="submit-button" ><a href="{% url 'Appointment' %}">Book Now</a></button>
                                 </div>
                             </div>
                         </form>

@@ -21,4 +21,5 @@ urlpatterns = [
     path("profile/", user_views.profile_view, name="profile"),
     path('delete/<str:id>',user_views.delete_profile,name='delete_profile'),
     path('query/',user_views.query, name='query'),
+    path('appointment/',user_views.App,name='Appointment'),
 ]

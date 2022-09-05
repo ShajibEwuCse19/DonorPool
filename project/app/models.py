@@ -1,3 +1,4 @@
+import email
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 import datetime
@@ -50,3 +51,14 @@ class User(AbstractUser):
     @property
     def md5_email(self) -> str:
         return hashlib.md5(self.email.strip().lower().encode("utf-8")).hexdigest()
+
+#Appointment
+class Appointment(models.Model):
+    name = models.CharField(max_length=100)
+    email = models.EmailField(max_length=100)
+    phone_number = PhoneNumberField()
+    date = models.DateField()
+    sms = models.CharField(max_length=5000)
+
+    def __str__(self) -> str:
+        return "Name : " + self.name + " Email: " + self.email 

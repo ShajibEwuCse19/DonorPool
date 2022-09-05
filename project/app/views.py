@@ -5,6 +5,7 @@ from django.contrib import messages
 from .forms import UserRegistrationForm, UserProfileForm
 from .models import User
 from django.views.decorators.http import require_http_methods
+from .models import Appointment
 
 
 # Home Page
@@ -59,3 +60,8 @@ def query(request):
     user_lists = User.objects.filter(district__icontains=user_district)
     return render(request, 'app/query_result.html', {'lists': user_lists, 'Q_key': user_district})
 
+#Appointment
+def App(request):
+    a_list = Appointment.objects.order_by('name')
+    diction = {'a_list': a_list}
+    return render(request, "app/Appointment.html", context=diction)
