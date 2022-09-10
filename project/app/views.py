@@ -65,3 +65,8 @@ def App(request):
     a_list = Appointment.objects.order_by('name')
     diction = {'a_list': a_list}
     return render(request, "app/Appointment.html", context=diction)
+#Appointment
+def App(request):
+    a_list = Appointment.objects.order_by('name')
+    diction = {'a_list': a_list}
+    return render(request, "app/Appointment.html", context=diction)

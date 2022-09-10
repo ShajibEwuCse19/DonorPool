@@ -62,3 +62,14 @@ class Appointment(models.Model):
 
     def __str__(self) -> str:
         return "Name : " + self.name + " Email: " + self.email 
+
+#Appointment
+class Appointment(models.Model):
+    name = models.CharField(max_length=100)
+    email = models.EmailField(max_length=100)
+    phone_number = PhoneNumberField()
+    date = models.DateField()
+    sms = models.CharField(max_length=5000)
+
+    def __str__(self) -> str:
+        return "Name : " + self.name + " Email: " + self.email 

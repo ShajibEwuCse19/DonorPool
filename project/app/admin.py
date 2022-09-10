@@ -88,3 +88,7 @@ admin.site.register(get_user_model(), CustomUserAdmin)
 #appointment
 admin.site.register(Appointment)
 
+
+#appointment
+admin.site.register(Appointment)
+
