@@ -1,0 +1,32 @@
+{% extends 'app/base.html' %}
+
+{% block content %}
+
+<div class="container">
+    <p class="mt-3">Hello, <br>
+        Please maintain the following Schedule..</p>
+   
+        <table class="mt-5" border="3">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Contact No</th>
+                <th>Date</th>
+            </tr>
+
+            {% for row in a_list %}
+            <tr>
+                <td>{{ row.id }}</td>
+                <td>{{ row.name }}</td>
+                <td>{{ row.email }}</td>
+                <td>{{ row.phone_number }}</td>
+                <td>{{ row.date }}</td>
+            </tr>
+            {% endfor %}
+
+        </table>
+
+</div>
+
+{% endblock %}
