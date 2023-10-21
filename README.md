@@ -4,7 +4,7 @@ To start the application on our local server, simply run this command using the 
 
 ```bash
 
-Create Virtual Invironemt:
+Create Virtual Environment:
 --------------------------------
 python -m pip install virtualenv
 python -m venv venv
